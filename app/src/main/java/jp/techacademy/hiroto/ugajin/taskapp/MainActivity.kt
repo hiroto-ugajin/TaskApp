@@ -25,13 +25,11 @@ import kotlinx.coroutines.*
 import java.text.SimpleDateFormat
 import java.util.*
 
-
 import android.content.pm.PackageManager
 
 import android.provider.Settings
 
 import io.realm.kotlin.ext.query
-
 
 import kotlinx.coroutines.*
 
@@ -99,6 +97,10 @@ class MainActivity : AppCompatActivity() {
         binding.fab.setOnClickListener { v ->
             val intent = Intent(this, InputActivity::class.java)
             startActivity(intent)
+
+//            Snackbar.make(v, "Replace with your own action", Snackbar.LENGTH_LONG)
+//                .setAction("Action", null).show(
+
         }
 
         // TaskAdapterを生成し、ListViewに設定する

@@ -176,12 +176,12 @@ class InputActivity : AppCompatActivity() {
 
 
 
-        val intent = Intent(applicationContext, TaskAlarmReceiver::class.java)
-        intent.putExtra(EXTRA_TASK, task.id)
+        val resultIntent = Intent(applicationContext, TaskAlarmReceiver::class.java)
+        resultIntent.putExtra(EXTRA_TASK, task.id)
         val pendingIntent = PendingIntent.getBroadcast(
             this,
             task.id,
-            intent,
+            resultIntent,
             PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
         )
 

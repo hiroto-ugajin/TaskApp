@@ -21,6 +21,9 @@ import jp.techacademy.hiroto.ugajin.taskapp.Task
 
 class TaskAlarmReceiver : BroadcastReceiver() {
     override fun onReceive(context: Context?, intent: Intent?) {
+
+        Log.d("TaskApp", "onReceive")
+
         val notificationManager =
             context!!.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
 
