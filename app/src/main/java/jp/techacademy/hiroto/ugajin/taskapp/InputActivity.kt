@@ -178,7 +178,7 @@ class InputActivity : AppCompatActivity() {
 
         val resultIntent = Intent(applicationContext, TaskAlarmReceiver::class.java)
         resultIntent.putExtra(EXTRA_TASK, task.id)
-        val pendingIntent = PendingIntent.getBroadcast(
+        val resultPendingIntent = PendingIntent.getBroadcast(
             this,
             task.id,
             resultIntent,
@@ -186,7 +186,7 @@ class InputActivity : AppCompatActivity() {
         )
 
         val alarmManager = getSystemService(ALARM_SERVICE) as AlarmManager
-        alarmManager.setAlarmClock(AlarmClockInfo(calendar.timeInMillis, null), pendingIntent)
+        alarmManager.setAlarmClock(AlarmClockInfo(calendar.timeInMillis, null), resultPendingIntent)
     }
 
     /**
