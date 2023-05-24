@@ -28,6 +28,9 @@ import java.util.*
 import android.content.pm.PackageManager
 
 import android.provider.Settings
+import android.view.Menu
+import androidx.appcompat.widget.SearchView
+
 
 import io.realm.kotlin.ext.query
 
@@ -176,18 +179,39 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
-//
-//        // 表示テスト用のタスクを作成してRealmに登録する
-//        addTaskForTest()
     }
 
-//    private fun putExtra(extraAppPackage: Any, applicationId: String) {
-//
+//    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+//        menuInflater.inflate(R.menu.search_menu, menu)
+//        return true
 //    }
 
-//    private fun putExtra(extraAppPackage: Any, applicationId: String) {
-//
-//    }
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.search_menu, menu)
+
+        val searchItem = menu.findItem(R.id.action_search)
+        val searchView = searchItem.actionView as SearchView
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String): Boolean {
+                // 検索ボタンが押された時の処理
+                performSearch(query)
+                return true
+            }
+
+            override fun onQueryTextChange(newText: String): Boolean {
+                // テキストが変更されるたびに呼ばれる処理（オートコンプリートなどに使用）
+                return false
+            }
+        })
+
+        return true
+    }
+
+    private fun performSearch(query: String) {
+        // 検索の実際の処理をここに追加する
+    }
+
+
 
     override fun onDestroy() {
         super.onDestroy()
