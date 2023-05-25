@@ -181,11 +181,6 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-//    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-//        menuInflater.inflate(R.menu.search_menu, menu)
-//        return true
-//    }
-
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.search_menu, menu)
 
@@ -207,11 +202,20 @@ class MainActivity : AppCompatActivity() {
         return true
     }
 
+//    private fun performSearch(query: String) {
+//        // 検索の実際の処理をここに追加する
+//    }
+
     private fun performSearch(query: String) {
-        // 検索の実際の処理をここに追加する
+        val filteredTasks = taskAdapter.taskList.filter { task ->
+            task.category.contains(query, ignoreCase = true)
+        }
+
+        // フィルタリングされたタスクの表示など、処理を行う
+        // 例えば、ListViewのアダプターにフィルタリング結果をセットするなど
+//        taskAdapter.setData(filteredTasks)
+        taskAdapter.updateTaskList(filteredTasks)
     }
-
-
 
     override fun onDestroy() {
         super.onDestroy()
@@ -228,26 +232,4 @@ class MainActivity : AppCompatActivity() {
             taskAdapter.updateTaskList(tasks)
         }
     }
-
-//    private fun reloadListView(tasks: List<Task>) {
-//        taskAdapter.updateTaskList(tasks)
-//    }
-//
-//    private fun addTaskForTest() {
-//        // 日付を文字列に変換用
-//        val simpleDateFormat = SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.JAPANESE)
-//
-//        realm.writeBlocking {
-//            // 登録済のデータがあれば削除
-//            delete<Task>()
-//
-//            // idが0の新しいデータを1件登録
-//            copyToRealm(Task().apply {
-//                id = 0
-//                title = "作業"
-//                contents = "プログラムを書いてPUSHする"
-//                date = simpleDateFormat.format(Date())
-//            })
-//        }
-//    }
 }

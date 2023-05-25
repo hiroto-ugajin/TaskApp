@@ -10,7 +10,7 @@ import android.widget.TextView
 
 class TaskAdapter(context: Context): BaseAdapter() {
     private val layoutInflater: LayoutInflater
-    private var taskList = mutableListOf<Task>()
+    var taskList = mutableListOf<Task>()
 
     init {
         this.layoutInflater = LayoutInflater.from(context)
@@ -52,6 +52,10 @@ class TaskAdapter(context: Context): BaseAdapter() {
         // データに変更があったことをadapterに通知
         notifyDataSetChanged()
     }
+
+//    fun setData(filteredTasks: List<Task>) {
+//
+//    }
 }
 
 
